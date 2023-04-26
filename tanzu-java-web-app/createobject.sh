@@ -1,6 +1,7 @@
-#!/bin/bash 
+#!/bin/bash  -x
 SOURCE=$(mktemp -d)
 DEST=/Users/jeff/Downloads/demo
+PD=$(pwd)
 COMPONENT_TYPE=$1
 PACKAGE_NAME=$2
 CLASS_NAME=$3
@@ -24,6 +25,6 @@ tanzu acc generate test-accelerator --server-url https://accelerator.view.amer.e
 
 unzip -q test-accelerator.zip -d $SOURCE 
 cd "${SOURCE}/test-accelerator";
-find . -type d  -print -exec mkdir -p "/Users/jeff/Downloads/demo/{}" \;
-find . -type f -exec cp {}  "/Users/jeff/Downloads/demo/{}" \;
+find . -type d  -print -exec mkdir -p "$PD/{}" \;
+find . -type f -exec cp {}  "$PD/{}" \;
 find . -type d -empty -delete
